@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn sum_game_ids(games_input :Vec<String>) -> i32{
+pub fn sum_game_ids(games_input: Vec<String>) -> i32 {
     // Define the cube counts
     let target_counts = [("red", 12), ("green", 13), ("blue", 14)]
         .iter()
@@ -19,9 +19,13 @@ pub fn sum_game_ids(games_input :Vec<String>) -> i32{
         // Split subsets into individual cube counts
         let subsets: Vec<Vec<&str>> = parts[1]
             .split(';')
-            .map(|subset| subset.trim().split(',')
-                .flat_map(|col| col.trim().split(' '))
-                .collect())
+            .map(|subset| {
+                subset
+                    .trim()
+                    .split(',')
+                    .flat_map(|col| col.trim().split(' '))
+                    .collect()
+            })
             .collect();
 
         // Initialize a variable to check if the game is possible
@@ -53,5 +57,5 @@ pub fn sum_game_ids(games_input :Vec<String>) -> i32{
         }
     }
 
-   possible_game_sum
+    possible_game_sum
 }

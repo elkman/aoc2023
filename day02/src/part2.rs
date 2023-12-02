@@ -13,9 +13,13 @@ pub fn sum_game_powers(games_input: Vec<String>) -> i32 {
         // Split subsets into individual cube counts
         let subsets: Vec<Vec<&str>> = parts[1]
             .split(';')
-            .map(|subset| subset.trim().split(',')
-                .flat_map(|col| col.trim().split(' '))
-                .collect())
+            .map(|subset| {
+                subset
+                    .trim()
+                    .split(',')
+                    .flat_map(|col| col.trim().split(' '))
+                    .collect()
+            })
             .collect();
 
         // Initialize a variable to check if the game is possible
@@ -35,7 +39,9 @@ pub fn sum_game_powers(games_input: Vec<String>) -> i32 {
                     green = max(green, count);
                 } else if color.eq("blue") {
                     blue = max(blue, count);
-                } else { panic!("unknown color {}", color) }
+                } else {
+                    panic!("unknown color {}", color)
+                }
             }
         }
 
