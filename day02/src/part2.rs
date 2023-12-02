@@ -7,7 +7,7 @@ pub fn sum_game_powers(games_input: Vec<String>) -> i32 {
     // Iterate through each game
     for game_input in games_input {
         // Split the input into game ID and subsets of cubes
-        let parts: Vec<&str> = game_input.split(":").collect();
+        let parts: Vec<&str> = game_input.split(':').collect();
         // game_id in parts[0] is not needed
 
         // Split subsets into individual cube counts

@@ -13,7 +13,7 @@ pub fn sum_game_ids(games_input: Vec<String>) -> i32 {
     // Iterate through each game
     for game_input in games_input {
         // Split the input into game ID and subsets of cubes
-        let parts: Vec<&str> = game_input.split(":").collect();
+        let parts: Vec<&str> = game_input.split(':').collect();
         let game_id: i32 = parts[0].split_whitespace().last().unwrap().parse().unwrap();
 
         // Split subsets into individual cube counts
