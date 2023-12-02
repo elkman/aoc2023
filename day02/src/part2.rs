@@ -7,15 +7,19 @@ pub fn sum_game_powers(games_input: Vec<String>) -> i32 {
     // Iterate through each game
     for game_input in games_input {
         // Split the input into game ID and subsets of cubes
-        let parts: Vec<&str> = game_input.split(":").collect();
+        let parts: Vec<&str> = game_input.split(':').collect();
         // game_id in parts[0] is not needed
 
         // Split subsets into individual cube counts
         let subsets: Vec<Vec<&str>> = parts[1]
             .split(';')
-            .map(|subset| subset.trim().split(',')
-                .flat_map(|col| col.trim().split(' '))
-                .collect())
+            .map(|subset| {
+                subset
+                    .trim()
+                    .split(',')
+                    .flat_map(|col| col.trim().split(' '))
+                    .collect()
+            })
             .collect();
 
         // Initialize a variable to check if the game is possible
@@ -35,7 +39,9 @@ pub fn sum_game_powers(games_input: Vec<String>) -> i32 {
                     green = max(green, count);
                 } else if color.eq("blue") {
                     blue = max(blue, count);
-                } else { panic!("unknown color {}", color) }
+                } else {
+                    panic!("unknown color {}", color)
+                }
             }
         }
 

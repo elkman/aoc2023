@@ -51,7 +51,10 @@ fn extract_first_and_last_digit(line: &str) -> u32 {
     }
 
     if first == 0 || last == 0 {
-        panic!("No digits found: line={}, first={}, last={}", line_string, first, last);
+        panic!(
+            "No digits found: line={}, first={}, last={}",
+            line_string, first, last
+        );
     }
     first * 10 + last
 }
